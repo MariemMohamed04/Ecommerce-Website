@@ -12,7 +12,15 @@ const addProduct = async(req, res, next) => {
     message: "success", product
   });
 }
+// 
+const getAllProducts = async(req, res, next) => {
+  let products = await productModel.find();
+  res.json({
+    message: "success", products
+  });
+}
 
 export {
-  addProduct
+  addProduct,
+  getAllProducts
 }
