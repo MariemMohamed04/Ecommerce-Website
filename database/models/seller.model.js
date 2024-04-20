@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.Schema({
+const sellerSchema = new mongoose.Schema({
+  sellerId: {
+    type: Number,
+    unique: true,
+    required: true
+  },
   name: {
     type: String,
     unique: [true, 'Name is Required'],
@@ -13,18 +18,12 @@ const schema = new mongoose.Schema({
     lowercase: true,
     required: true
   },
-  products: { 
+  products: [{ 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Product' 
-  }
+  }]
 }, {
   timestamps: true
 });
 
-export const sellerModel = mongoose.model('seller', schema);
-
-
-
-
-
-
+export const sellerModel = mongoose.model('seller', sellerSchema);

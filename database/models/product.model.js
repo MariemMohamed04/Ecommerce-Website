@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
+  // productId: {
+  //   type: Number,
+  //   unique: true,
+  //   required: true
+  // },
   name: {
     type: String,
     unique: [true, 'Name is Required'],
@@ -17,7 +22,8 @@ const schema = new mongoose.Schema({
   photo: String,
   seller: { 
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Seller' 
+    ref: 'Seller',
+    required: true
   },
   creationDate: {
     type: Date,
@@ -27,10 +33,4 @@ const schema = new mongoose.Schema({
   timestamps: true
 });
 
-export const productModel = mongoose.model('product', schema);
-
-
-
-
-
-
+export const productModel = mongoose.model('product', productSchema);
